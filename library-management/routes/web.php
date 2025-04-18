@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('signup');
+    return view('register');
 });
+
 
 Route::get('/signup', function () {
     return view('signup');
