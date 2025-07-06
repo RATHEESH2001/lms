@@ -105,32 +105,36 @@ button {
     }
 }
 </style>
-<div class="container">
-    <!-- Profile Header -->
-    <div class="profile-header">
-      <img src="profile.jpg" alt="Profile Picture" class="profile-img" />
-      <div>
-        <h2 class="profile-name">Ratheesh C</h2>
-        <p class="profile-id">Student | Member ID: LIB12345</p>
-      </div>
-    </div>
 
-    <!-- Profile Info -->
-    <div class="profile-info">
-      <div>
-        <h3 class="info-title">Contact Info</h3>
-        <p><strong>Email:</strong> ratheesh@example.com</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p><strong>Address:</strong> Chennai, India</p>
-      </div>
-      <div>
-        <h3 class="info-title">Library Stats</h3>
-        <p><strong>Borrowed:</strong> 3 books</p>
-        <p><strong>Overdue:</strong> 1 book</p>
-        <p><strong>Reserved:</strong> 2 books</p>
-        <p><strong>Total History:</strong> 25 books</p>
-      </div>
+<div class="container">
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <img src="{{ $user->photo ?? 'default.jpg' }}" alt="Profile Picture" class="profile-img" />
+    <div>
+      <h2 class="profile-name">{{ $user->name }}</h2>
+      <p class="profile-id">{{ $user->profession }} | Member ID: {{ $user->member_id }}</p>
     </div>
+  </div>
+
+  <!-- Profile Info -->
+  <div class="profile-info">
+    <div>
+      <h3 class="info-title">Contact Info</h3>
+      <p><strong>Email:</strong> {{ $user->email }}</p>
+      <p><strong>Phone:</strong> {{ $user->phone }}</p>
+      <p><strong>Address:</strong> {{ $user->address }}</p>
+    </div>
+    <div>
+      <h3 class="info-title">Library Stats</h3>
+      <p><strong>Borrowed:</strong> books</p>
+      <p><strong>Overdue:</strong>book</p>
+      <p><strong>Reserved:</strong>  books</p>
+      <p><strong>Total History:</strong>  books</p>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- Action Buttons -->
     <div class="action-buttons">
