@@ -17,6 +17,9 @@ Route::get('/login', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/profile', function () {
+    return view('profile');
+});
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/signup', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

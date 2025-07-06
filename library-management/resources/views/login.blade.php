@@ -40,7 +40,7 @@
     }
     button:hover {
       background: #218838;
-    }
+    } 
     .signup-link {
       text-align: center;
       margin-top: 15px;

@@ -1,6 +1,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <style>
+  {{-- <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
@@ -48,7 +48,9 @@
     }
   </style>
 </head>
-<body>
+<body> --}}
+    @extends('app')
+@section('content')
   <div class="signup-container">
       @csrf
     <h2>Sign Up</h2>
@@ -135,3 +137,4 @@
 
 
 </script>
+@endsection
