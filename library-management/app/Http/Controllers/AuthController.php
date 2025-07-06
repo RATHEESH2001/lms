@@ -16,9 +16,12 @@ class AuthController extends Controller
     {
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
-            'fullname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'fullname'   => 'required|string|max:255',
+        'email'      => 'required|string|email|max:255|unique:users',
+        'password'   => 'required|string|min:8',
+        'phone'      => 'required',
+        'address'    => 'required|string|min:10',
+        'profession' => 'required|string|max:50',
         ]);
 
         // Return validation errors if any
@@ -28,9 +31,12 @@ class AuthController extends Controller
 
         // Create the user
         $user = User::create([
-            'name' => $request->fullname,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name'       => $request->fullname,
+        'email'      => $request->email,
+        'password'   => Hash::make($request->password),
+        'phone'      => $request->phone,
+        'address'    => $request->address,
+        'profession' => $request->profession,
         ]);
         // dd($user);
 

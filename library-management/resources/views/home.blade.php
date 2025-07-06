@@ -363,6 +363,13 @@
                     <li><a href="#">Services</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Admin</a></li>
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" style="padding: 8px 16px; background: #e3342f; color: white; border: none; border-radius: 4px;">
+                            Logout
+                        </button>
+                    </form>
+
                 </ul>
             </nav>
         </div>
