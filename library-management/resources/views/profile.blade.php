@@ -97,6 +97,24 @@ button {
 .btn-history:hover {
     background-color: #495057;
 }
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 300px;
+  }
 
 /* Responsive design */
 @media (min-width: 768px) {
@@ -109,7 +127,7 @@ button {
 <div class="container">
   <!-- Profile Header -->
   <div class="profile-header">
-    <img src="{{ $user->photo ?? 'default.jpg' }}" alt="Profile Picture" class="profile-img" />
+    <img src="{{ $user->photo  }}" alt="Profile Picture" class="profile-img" />
     <div>
       <h2 class="profile-name">{{ $user->name }}</h2>
       <p class="profile-id">{{ $user->profession }} | Member ID: {{ $user->member_id }}</p>
@@ -142,4 +160,85 @@ button {
       <button class="btn-password">Change Password</button>
       <button class="btn-history">View History</button>
     </div>
+
+
+<!-- Password Modal -->
+<div id="passwordModal" class="modal" style="display:none;">
+    <form id="changePasswordForm">
+        @csrf
+        <div>
+          <label for="current_password">Current Password</label>
+          <input type="password" name="current_password" required>
+        </div>
+        <div>
+          <label for="new_password">New Password</label>
+          <input type="password" name="new_password" required>
+        </div>
+        <div>
+          <label for="confirm_password">Confirm Password</label>
+          <input type="password" name="new_password_confirmation" required>
+        </div>
+        <button type="submit">Update Password</button>
+        <button type="button" class="close-modal">Cancel</button>
+      </form>
+
+</div>
+
   </div>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+
+
+
+
+    $(document).ready(function () {
+      // Open modal
+      $('.btn-password').on('click', function () {
+        $('#passwordModal').fadeIn();
+      });
+
+      // Close modal
+      $('.close-modal').on('click', function () {
+        $('#passwordModal').fadeOut();
+      });
+
+      // Submit change password via AJAX
+      $('#changePasswordForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent default form submit
+
+        $.ajax({
+          url: '/change-password',
+          method: 'POST',
+          data: $(this).serialize(),
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+          success: function (response) {
+            alert('Password updated successfully!');
+            $('#passwordModal').fadeOut();
+            $('#changePasswordForm')[0].reset();
+          },
+          error: function (xhr) {
+            if (xhr.status === 422) {
+              let errors = xhr.responseJSON.errors;
+              let msg = '';
+              for (let field in errors) {
+                msg += errors[field][0] + '\n';
+              }
+              alert(msg);
+            } else {
+              alert('Something went wrong.');
+            }
+          }
+        });
+      });
+
+      // Optional: Close modal on click outside
+      $(window).on('click', function (e) {
+        if ($(e.target).is('#passwordModal')) {
+          $('#passwordModal').fadeOut();
+        }
+      });
+    });
+  </script>
+

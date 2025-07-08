@@ -26,3 +26,4 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profile', [UserController::class, 'getUserData']);
+Route::post('/change-password', [AuthController::class, 'changePassword'])->name('change.password');
