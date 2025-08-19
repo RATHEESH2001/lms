@@ -7,7 +7,8 @@
 
     <title>@yield('title', 'Default Title')</title>
     {{-- <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> --}}
-      @vite(['resources/scss/app.scss'])
+      @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+
     @stack('styles')
 </head>
 <body>

@@ -1,2 +1,78 @@
-// @use "pages/signup";
+.signup-page .signup-page-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.signup-page .signup-page-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.signup-page form input,
+.signup-page form textarea,
+.signup-page form select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.signup-page form select {
+    background-color: #fff;
+}
+
+.signup-page .error {
+    display: block;
+    font-size: 13px;
+    color: red;
+    margin-bottom: 8px;
+}
+
+.signup-page button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-page button:hover {
+    background-color: #45a049;
+}
+
+.signup-page-login-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signup-page-login-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-page-login-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .signup-page .signup-page-container {
+        padding: 20px;
+        margin: 20px;
+    }
+}
