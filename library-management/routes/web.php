@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookController;
+
 
 Route::get('/', function () {
     return view('signup');
@@ -27,3 +29,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profile', [UserController::class, 'getUserData']);
 Route::post('/change-password', [AuthController::class, 'changePassword'])->name('change.password');
+
+Route::get('/books/search', [BookController::class, 'search']);
+Route::get('/books/category/{category}', [BookController::class, 'getByCategory']);
+Route::get('/books/author/{author}', [BookController::class, 'getByAuthor']);
+

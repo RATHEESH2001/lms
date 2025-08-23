@@ -58,9 +58,9 @@
       <button type="button" class="user-close-modal">Cancel</button>
     </form>
   </div>
+  @include('layouts.footer')
 </div>
 
-@include('layouts.footer')
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
