@@ -1,6 +1,235 @@
 @extends('app')
 @section('content')
+<style>/* ========== LIBRARY HOME ========== */
+.library-home {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1e293b;
+  background: #f8fafc;
+}
 
+/* --- Search Section --- */
+.search-container {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+}
+
+.search-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-box button {
+  background: #fbbf24;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-box button:hover {
+  background: #f59e0b;
+}
+
+/* --- Features --- */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 60px 20px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.feature-content {
+  padding: 20px;
+}
+
+.feature-content h3 {
+  margin-bottom: 10px;
+  color: #1e3a8a;
+}
+
+/* --- Stats --- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  background: #f1f5f9;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.stat-card h3 {
+  font-size: 1.8rem;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* --- New Arrivals --- */
+.recent-books {
+  padding: 60px 20px;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #1e3a8a;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.book-info {
+  padding: 15px;
+}
+
+.book-info h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+
+.status.available {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.borrowed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* --- Quick Links --- */
+.quick-links {
+  padding: 60px 20px;
+  background: #f9fafb;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.link-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.link-card:hover {
+  transform: translateY(-4px);
+  background: #eff6ff;
+}
+
+.link-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-card h4 {
+  font-size: 1rem;
+  margin: 0;
+  color: #1e293b;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .search-box {
+    flex-direction: column;
+  }
+  .search-box button {
+    width: 100%;
+  }
+}
+</style>
 <div class="library-home">
 
     @include('layouts.header')
@@ -172,7 +401,7 @@
         </section>
     </main>
 
-    @include('layouts.footer')
 
 </div>
+@include('layouts.footer')
 @endsection

@@ -1,7 +1,213 @@
 @extends('app')
 @section('content')
 @include('layouts.header')
+<style>/* ========== USER PROFILE PAGE ========== */
+.user-profile-page {
+  background: #f8fafc;
+  padding: 30px 20px;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.user-profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* ---------- Header (avatar + name) ---------- */
+.user-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.user-profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1e3a8a;
+}
+
+.user-profile-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.user-profile-id {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* ---------- Profile Info ---------- */
+.user-profile-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.user-info-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.user-profile-info p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+/* ---------- Action Buttons ---------- */
+.user-action-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.user-action-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-btn-edit {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.user-btn-edit:hover {
+  background: #2563eb;
+}
+
+.user-btn-password {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.user-btn-password:hover {
+  background: #d97706;
+}
+
+.user-btn-history {
+  background: #10b981;
+  color: #fff;
+}
+
+.user-btn-history:hover {
+  background: #059669;
+}
+
+/* ---------- Password Modal ---------- */
+.user-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30,41,59,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.user-modal form {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.user-modal form div {
+  margin-bottom: 15px;
+}
+
+.user-modal label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #1e293b;
+}
+
+.user-modal input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.user-modal input:focus {
+  border-color: #3b82f6;
+}
+
+.user-modal button[type="submit"] {
+  background: #3b82f6;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background 0.3s ease;
+}
+
+.user-modal button[type="submit"]:hover {
+  background: #2563eb;
+}
+
+.user-close-modal {
+  background: #e5e7eb;
+  color: #111827;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.user-close-modal:hover {
+  background: #d1d5db;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .user-profile-info {
+    grid-template-columns: 1fr;
+  }
+
+  .user-profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .user-action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+</style>
 <div class="user-profile-page">
   <div class="user-profile-container">
     <!-- Profile Header -->
@@ -58,8 +264,8 @@
       <button type="button" class="user-close-modal">Cancel</button>
     </form>
   </div>
-  @include('layouts.footer')
 </div>
+@include('layouts.footer')
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -110,7 +316,5 @@ $(document).ready(function () {
 });
 </script>
 
-<style>
 
-</style>
 @endsection

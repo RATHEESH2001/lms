@@ -1,6 +1,104 @@
 @extends('app')
 @section('content')
+<style>/* ========== SIGNUP PAGE ========== */
+.signup-page {
+  background: #f1f5f9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.signup-page-container {
+  background: #ffffff;
+  padding: 35px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ---------- Form ---------- */
+.signup-page-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.signup-page-container form input,
+.signup-page-container form textarea,
+.signup-page-container form select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-page-container form input:focus,
+.signup-page-container form textarea:focus,
+.signup-page-container form select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+/* Error messages */
+.error {
+  display: block;
+  font-size: 0.85rem;
+  color: #dc2626;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Submit button */
+#signupFormBtn {
+  width: 100%;
+  padding: 12px;
+  background: #1e3a8a;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#signupFormBtn:hover {
+  background: #153e75;
+}
+
+/* ---------- Login link ---------- */
+.signup-page-login-link {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.signup-page-login-link a {
+  color: #3b82f6;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.signup-page-login-link a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .signup-page-container {
+    padding: 25px 20px;
+  }
+}
+</style>
 <div class="signup-page">
   <div class="signup-page-container">
     <form id="signupFormElement">

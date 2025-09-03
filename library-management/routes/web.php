@@ -23,6 +23,9 @@ Route::get('/home', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+Route::get('/book', function () {
+    return view('book');
+});
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+
 class BookController extends Controller
 {
+    // 🔍 Search Books
     public function search(Request $request)
     {
         $query = $request->input('query'); // search term
@@ -15,43 +17,31 @@ class BookController extends Controller
                     ->orWhere('category', 'LIKE', "%{$query}%")
                     ->get();
 
-        return response()->json($books);
+        // return view instead of JSON
+        return view('book', compact('books'));
     }
 
-public function getByAuthor($author)
-{
-    // Fetch books that belong to a specific category
-    $books = Book::where('author', $author)->get();
+    // 📚 Get books by author
+    public function getByAuthor($author)
+    {
+        $books = Book::where('author', $author)->get();
 
-    // If no books found
-    if ($books->isEmpty()) {
-        return response()->json([
-            'message' => 'No books found in this author',
-            'data' => []
-        ], 404);
+        if ($books->isEmpty()) {
+            return view('book')->with('error', 'No books found for this author.');
+        }
+
+        return view('book', compact('books'));
     }
 
-    return response()->json([
-        'message' => 'Books fetched successfully',
-        'data' => $books
-    ], 200);
-}
-public function getByCategory($category)
-{
-    // Fetch books that belong to a specific category
-    $books = Book::where('category', $category)->get();
+    // 📖 Get books by category
+    public function getByCategory($category)
+    {
+        $books = Book::where('category', $category)->get();
 
-    // If no books found
-    if ($books->isEmpty()) {
-        return response()->json([
-            'message' => 'No books found in this category',
-            'data' => []
-        ], 404);
+        if ($books->isEmpty()) {
+            return view('books')->with('error', 'No books found in this category.');
+        }
+
+        return view('book', compact('books'));
     }
-
-    return response()->json([
-        'message' => 'Books fetched successfully',
-        'data' => $books
-    ], 200);
-}
 }
