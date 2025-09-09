@@ -288,19 +288,23 @@
             </div>
         </section>
 
-        <!-- Recent Books -->
         <section class="recent-books">
             <h2 class="section-title">New Arrivals</h2>
             <div class="books-grid">
+                  @foreach($categories as $category)
                 <div class="book-card">
                     <img src="/api/placeholder/200/300" alt="Book Cover">
                     <div class="book-info">
-                        <h4>The Silent Patient</h4>
+                        <h4> <a href="{{ url('/home/book_categories/' . $category) }}">
+                {{ $category }}
+            </a></h4>
                         <p>Alex Michaelides</p>
                         <span class="status available">Available</span>
                     </div>
                 </div>
-                <div class="book-card">
+            @endforeach
+
+                {{-- <div class="book-card">
                     <img src="/api/placeholder/200/300" alt="Book Cover">
                     <div class="book-info">
                         <h4>Atomic Habits</h4>
@@ -331,7 +335,7 @@
                         <p>Andy Weir</p>
                         <span class="status borrowed">Borrowed</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
 

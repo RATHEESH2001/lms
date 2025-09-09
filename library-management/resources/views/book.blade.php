@@ -6,6 +6,9 @@
 @section('content')
 <div class="container py-4">
 
+
+<a href="{{ url('/home') }}">⬅ Back to Categories</a>
+
   {{-- Header --}}
   <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
     <h1 class="h3 mb-0">Books</h1>

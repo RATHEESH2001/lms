@@ -212,7 +212,7 @@
   <div class="user-profile-container">
     <!-- Profile Header -->
     <div class="user-profile-header">
-      <img src="{{ $user->photo }}" alt="Profile Picture" class="user-profile-img" />
+      <img src="" alt="Profile Picture" class="user-profile-img" />
       <div>
         <h2 class="user-profile-name">{{ $user->name }}</h2>
         <p class="user-profile-id">{{ $user->profession }} | Member ID: {{ $user->member_id }}</p>
@@ -246,24 +246,25 @@
 
   <!-- Password Modal -->
   <div id="passwordModal" class="user-modal" style="display:none;">
-    <form id="changePasswordForm">
-      @csrf
-      <div>
-        <label for="current_password">Current Password</label>
-        <input type="password" name="current_password" required>
-      </div>
-      <div>
-        <label for="new_password">New Password</label>
-        <input type="password" name="new_password" required>
-      </div>
-      <div>
-        <label for="confirm_password">Confirm Password</label>
-        <input type="password" name="new_password_confirmation" required>
-      </div>
-      <button type="submit">Update Password</button>
-      <button type="button" class="user-close-modal">Cancel</button>
-    </form>
-  </div>
+  <form id="changePasswordForm">
+    @csrf
+    <div>
+      <label for="current_password">Current Password</label>
+      <input type="password" id="current_password" name="current_password" required>
+    </div>
+    <div>
+      <label for="new_password">New Password</label>
+      <input type="password" id="new_password" name="new_password" required>
+    </div>
+    <div>
+      <label for="new_password_confirmation">Confirm Password</label>
+      <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
+    </div>
+    <button type="submit">Update Password</button>
+    <button type="button" class="user-close-modal">Cancel</button>
+  </form>
+</div>
+
 </div>
 @include('layouts.footer')
 

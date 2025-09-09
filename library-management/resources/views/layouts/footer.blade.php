@@ -66,7 +66,7 @@ footer {
     margin-top: 10px;
   }
 }
-</style>
+ </style>
    <footer>
         <div class="footer-content">
             <div class="footer-section">

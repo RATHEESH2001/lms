@@ -131,8 +131,7 @@ public function generateUniqueUserId(): string
     }
 
     $user->password = Hash::make($request->new_password);
-var_dump($user->password);
-die;
+
 
     $user->save();
 

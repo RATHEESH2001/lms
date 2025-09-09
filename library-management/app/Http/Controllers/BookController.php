@@ -34,7 +34,7 @@ class BookController extends Controller
     }
 
     // 📖 Get books by category
-    public function getByCategory($category)
+    public function searchByCategory($category)
     {
         $books = Book::where('category', $category)->get();
 
@@ -44,4 +44,36 @@ class BookController extends Controller
 
         return view('book', compact('books'));
     }
+
+public function showCategories()
+{
+    // Get distinct category names
+    $categories = Book::select('category')->distinct()->pluck('category');
+
+    return view('home', compact('categories'));
+}
+
+public function getByCategory($category)
+{
+    // Get all books in a specific category
+    $books = Book::where('category', $category)->get();
+
+    if ($books->isEmpty()) {
+        return view('category', [
+            'error' => "No books found in {$category} category.",
+            'category' => $category
+        ]);
+    }
+
+    return view('book_categories', compact('books', 'category'));
+}
+ public function show($id)
+    {
+        $book = Book::findOrFail($id);
+
+        // since your blade file is book_detail.blade.php
+        return view('book_detail', compact('book'));
+    }
+
+
 }
