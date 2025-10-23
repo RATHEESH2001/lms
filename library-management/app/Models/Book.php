@@ -11,6 +11,7 @@ class Book extends Model
 
     protected $fillable = [
         'title',
+        'image',
         'author',
         'category',
         'isbn',
@@ -18,5 +19,8 @@ class Book extends Model
         'published_year',
         'pages',
         'language',
+        'available_copies',
+'description',
+'total_copies'
     ];
 }
